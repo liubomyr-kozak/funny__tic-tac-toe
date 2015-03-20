@@ -1,0 +1,75 @@
+<html ng-app="game">
+<head>
+  <title>Tic Tac Toe</title>
+  <link href="app/assets/css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body ng-controller="gameBoardCtroller" ng-cloak>
+<div class="player_section">
+  <div class="player_icon_wrap">
+    <div class="{{player1.className}} player_icon"
+         ng-class="{ player_icon_default: !player1.className}"
+         ng-click="player_list1 = true"></div>
+    <span ng-show="!player1.className">
+        <br/>
+				клікніть на іконку щоб вибрати собі гравця
+        <ul class="player_list" ng-show="player_list1">
+          <li ng-class="minion.name" ng-click="setClassToPlayer(1, minion.name); player_list1 = false"
+              ng-repeat="minion in minions"></li>
+        </ul>
+		</span>
+  </div>
+  <div class="player_board">
+    <br/>
+    Виграв: {{player1.wins}}
+  </div>
+
+</div>
+
+<div class="game_board">
+
+  <div class="notification" ng-show="notification.isVisible">
+    <div>
+      {{notification.text}}
+    </div>
+    <span class="notification-btn" ng-click="restart()">Спробувати ще</span>
+    <!--<span class="notification-btn notification-btn-finish" ng-click="finish()">Фатіт</span>-->
+  </div>
+
+  <game-board player1="player1" player2="player2"></game-board>
+
+  <div class="box_block">
+    <div id="item1" class="bomb" draggable></div>
+    <div class="box"></div>
+  </div>
+</div>
+
+<div class="player_section">
+  <div class="player_icon_wrap">
+    <div class="{{player2.className}} player_icon"
+         ng-class="{ player_icon_default: !player2.className}"
+         ng-click="player_list2 = true"></div>
+    <span ng-show="!player2.className">
+        <br/>
+				клікніть на іконку щоб вибрати собі гравця
+        <ul class="player_list" ng-show="player_list2">
+          <li ng-class="minion.name" ng-click="setClassToPlayer(2, minion.name); player_list2 = false"
+              ng-repeat="minion in minions"></li>
+        </ul>
+		</span>
+  </div>
+
+  <div class="player_board">
+    <br>
+    Виграв: {{player2.wins}}
+  </div>
+
+</div>
+</body>
+<script src="node_modules/angular/angular.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="app/directives/draggable-directive.js"></script>
+<script type="text/javascript" src="app/directives/game-core-factory.js"></script>
+<script type="text/javascript" src="app/directives/game-board-controller.js"></script>
+<script type="text/javascript" src="app/directives/game-board-directive.js"></script>
+</html>
