@@ -1,0 +1,8 @@
+<table id="board-table">
+  <tr ng-repeat="row in board">
+    <td id="c-{{ $parent.$index}}-{{$index}}" ng-repeat="cell in row" ng-click="getCell($event)">
+      <span >&nbsp;</span>
+      <span droppable  style="opacity: 0.3;" drop="handleDrop()"></span>
+    </td>
+  </tr>
+</table>

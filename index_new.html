@@ -1,0 +1,20 @@
+<html ng-app="game">
+<head>
+  <title>Tic Tac Toe</title>
+  <link href="app/assets/css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body ng-controller="gameBoardController" ng-cloak>
+
+  <players count="playerCount"></players>
+  <board roll="rollCount"></board>
+  <weapons></weapons>
+
+  <game-board board-size="boardSize" board-click="getSomeCell" ></game-board>
+
+</body>
+<script src="node_modules/angular/angular.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="app/players/players-directives.js"></script>
+<script type="text/javascript" src="app/game-board/game-board-directive.js"></script>
+</html>

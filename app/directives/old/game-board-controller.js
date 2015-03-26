@@ -44,6 +44,18 @@ GameApp.controller('gameBoardCtroller', ['$timeout', '$scope', function ($timeou
   $scope.restart = function(){
     $scope.notification.isVisible = false;
 
+
+
+        angular.element(
+          document
+            .getElementsByClassName('box_block'))
+            .append('<div id="item1" class="bomb" draggable></div>'
+        );
+
+
+
+    //angular.$digest()
+
     $scope.$broadcast('restartGame');
   };
 
@@ -51,4 +63,8 @@ GameApp.controller('gameBoardCtroller', ['$timeout', '$scope', function ($timeou
     $scope['player' + playerIndex].className = className
   };
 
+
+  [
+    [{cell: 2, bomb: 0}],[{cell: 1, bomb: 0}],[{cell: 0, bomb: 0}]
+  ]
 }]);
